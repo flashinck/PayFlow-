@@ -61,3 +61,8 @@ class TransactionStatus(str, Enum):
     FAILED = "failed" #Транзакция не удалась
     CANCELLED = "cancelled" #Тразакция отменена
 
+class AccountType(str, Enum):
+    CHECKING = "checking" #Текущий расчетный счет
+    SAVING = "savings" #Сберегательный счет
+    BUSSINESS = "bussiness" #Бизнес-счет
+    CREDIT = "credit" #Кредитный счет
