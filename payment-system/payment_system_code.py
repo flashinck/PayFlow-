@@ -38,3 +38,26 @@ SessionLocal = sessionmaker(
     autoflush=False
     bind=engine
 )
+Base = declarative_base()
+
+# ==================== НАСТРОЙКА БЕЗОПАСНОСТИ ====================
+pwd_context = CryptoContext(schemes=["bcrypt"], deprecated="auto")
+security = HTTPBearer()
+
+# ==================== ПЕРЕЧИСЛЕНИЯ (ENUMS) ====================
+# Enums - это ограниченные наборы значений, как варианты в меню
+# Используем для полей, которые могут иметь только определенные значения
+class TransactionType(str, Enum):
+    TRANSFER = "transfer" # Перевод денег с одного счета на другой
+    DEPOSIT = "deposit"  # Пополнение счета (внесение денег)
+    WITHDRAWAL = "withdrawal" # Снятие денег со счета
+    PAYMENT = "payment" # Оплата товара или услуги
+    REFUND = "refund" # Возврат денег
+    
+class TransactionStatus(str, Enum):
+    PENDING = "pending" #Транзакция создана, но еще не обрабатывается
+    PROCESSING = "processing" #Транзакция в процессе обработки
+    COMPLETED = "completed" #Тразакция успешно завершена
+    FAILED = "failed" #Транзакция не удалась
+    CANCELLED = "cancelled" #Тразакция отменена
+
