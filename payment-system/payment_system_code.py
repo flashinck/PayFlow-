@@ -66,3 +66,9 @@ class AccountType(str, Enum):
     SAVING = "savings" #Сберегательный счет
     BUSSINESS = "bussiness" #Бизнес-счет
     CREDIT = "credit" #Кредитный счет
+    
+class AccountStatus(str, Enum):
+    ACTIVE = "active" # Счет доступен для всех операций
+    INACTIVE = "inactive" # Счет существует, но операции заблокированы
+    FROZEN = "frozen" # Счет заморожен (например, по решению суда)
+    CLOSED = "closed" # Счет закрыт
