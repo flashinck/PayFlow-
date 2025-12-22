@@ -96,4 +96,10 @@ class User(Base):
     user_id = Column(Integer, primary_key=True, index=True)
     
     # username - логин пользователя (уникальный, обязательный)
-    # String
+    # String - строка переменной длины
+    # unique=True - значение должно быть уникальным во всей таблице
+    # nullable=False - поле НЕ может быть пустым (NOT NULL в SQL)
+    username = Column(String, unique=True, index=True, nullable=False)
+    
+    # email - электронная почта (уникальная, обязательная)
+    email = Column(String, nullable=False)
